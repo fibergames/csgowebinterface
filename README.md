@@ -22,7 +22,7 @@ As I just said it is only for CS:GO serevers wich are running on linux.
 <ul>
 <li>A web Server (I use Apache)</li>
 <li>PHP</li>
-<li>A CS:GO Server (It would be a lot easier if you reinstall it or move it into the right folder otherwise you have to edit a lot of shell scripts</li>
+<li>A CS:GO Server</li>
 <li>Some sasic Linux command Knowledge</li>
 </ul>
 
