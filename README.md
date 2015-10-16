@@ -22,6 +22,7 @@ As I just said it is only for CS:GO serevers wich are running on linux.
 <li>PHP</li>
 <li>A CS:GO Server</li>
 <li>Some basic Linux command Knowledge</li>
+<li>The linux application screen </li>
 </ul>
 
 <b>Installation</b>
