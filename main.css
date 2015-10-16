@@ -1,0 +1,34 @@
+body {
+    background: url(b.png);
+    background-size: 2300px 1900px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment;
+}
+a {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 16px;
+  background: #138565;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+a:hover {
+
+  background: #0bd6bb;
+  text-decoration: none;
+}
+h1{
+  color: #FFFFFF;
+  font-family: "Courier New", Times, serif;
+  font-size: 50px
+}
+
+p2, p6, p5, p9, p8 {
+  color: #FFFFFF;
+  font-family: "Courier New", Times, serif;
+  font-size: 30px
+}

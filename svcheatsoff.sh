@@ -1,0 +1,1 @@
+screen -S csgoretake -p 0 -X stuff "sv_cheats 0"^M
