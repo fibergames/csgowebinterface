@@ -1,6 +1,4 @@
 # csgowebinterface
-<h1>+++Upload of everything will come at Friday 16th of October!!!+++</h1>
-
 A simple collection of php sites, shell scripts and some html stuff to do some things with your CS:GO server on linux.
 As I just said it is only for CS:GO serevers wich are running on linux.
 
