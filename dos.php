@@ -15,20 +15,31 @@ require('access.php');
   <li1><a class="disabled" href="lookin.php">status</a></li1>
   <li><a class="disabled" href="svcheats1.php">svcheats_1</a></li>
   <li><a class="disabled" href="svcheats0.php">svcheats_0</a></li>
-  <li><a class="disabled" href="dosplug.php">plugins</a></li>
+  <li2><a class="disabled" href="dosplug.php">plugins</a></li2>
   <li><form action="action.php" method="post">
       command:  <input type="text" name="cmd" /><input type="submit" name="submit" value="Submit me!" />
   <li><a class="disabled" href="logout.php">LogOut</a></li>
 </li>
 </ul>
-
+<ul id="plugins">
+  <li><a class="disabled" href="bhopon.php">bHopOn</a></li>
+  <li><a class="disabled" href="bhopoff.php">bHopOff</a></li>
+  <li><a class="disabled" href="retakeon.php">retakeOn</a></li>
+  <li><a class="disabled" href="retakeoff.php">retakeOff</a></li>
+  <li><a class="disabled" href="lookinplug.php">lokkIn</a></li>
+</ul id="plugins">
 <script src="jquery.js"></script>
 <script>
 $(function(){
 $('p6').hide();
+$(plugins).hide();
 $('li1').on('mouseover', function(){
   $('p6').fadeToggle();
 });
+$('li2').on('click', function(){
+  $(plugins).fadeToggle();
+});
+
 });
 </script>
 
