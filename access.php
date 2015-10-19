@@ -3,7 +3,7 @@
 
 <?php
 //put sha1() encrypted password here - example is 'hello'
-$password = '72a5b2626b757f4bba1774ef46db94991ab0f183';
+$password = 'aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d';
 
 session_start();
 if (!isset($_SESSION['loggedIn'])) {
