@@ -1,2 +1,3 @@
 #!/bin/bash
+#i think that is useless...
 screen -r csupdate

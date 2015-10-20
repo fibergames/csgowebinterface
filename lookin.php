@@ -1,3 +1,4 @@
+<!-->checks if screen is running and covert the output to user friendly<-->
 <?php
 require('access.php');
 $output = shell_exec('screen -ls');
@@ -15,6 +16,6 @@ if (strpos($output,'No Sockets found in /var/run/screen/S-www-data') !== false) 
 ?>
 
 
-<form action="http://84.200.55.45/dos.php">
+<form action="dos.php">
     <input type="submit" value="Back">
 </form>
