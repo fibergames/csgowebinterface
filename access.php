@@ -1,4 +1,5 @@
 
+<!--main file for the login and password protection thing.-->
 
 
 <?php
