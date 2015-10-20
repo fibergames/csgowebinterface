@@ -1,4 +1,4 @@
-
+<!-->That's the link collection where everything is linked<-->
 <?php
 require('access.php');
 ?>
@@ -51,7 +51,7 @@ if (strpos($output,'No Sockets found in /var/run/screen/S-www-data') !== false) 
 		echo "<p6>Server is running<br></p6>";
 }
 ?>
-<!--
+<!-- don't think that is important
 <form action="start.php">
     <input type="submit" value="Starten">
 </form>
