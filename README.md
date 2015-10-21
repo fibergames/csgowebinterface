@@ -28,6 +28,5 @@ As I just said it is only for CS:GO serevers wich are running on linux.
 <b>Installation</b>
 <ul>
 <li>Copy all stuff into the var/www/ folder.</li>
-<li>Edit the shell scripts (not everyone must do that)</li>
+<li>Edit the dire.cfg and set your password in the acsess.php(default password is 'hello')</li>
 </ul>
-
