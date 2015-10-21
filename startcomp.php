@@ -1,4 +1,4 @@
-
+<!-->executes the startcomp.sh which has other startparameters than the csstart.sh<-->
 <?php
 require('access.php');
 exec('bash startcomp.sh');

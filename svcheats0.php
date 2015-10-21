@@ -1,4 +1,4 @@
-
+<!-->this executes the svcheatsoff.sh file<-->
 <?php
 require('access.php');
 exec('bash svcheatsoff.sh');

@@ -1,3 +1,4 @@
+<!-->this stops the server and executes the update process<-->
 <?php
 require('access.php');
 echo "Updatete...";
