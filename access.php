@@ -22,12 +22,17 @@ if (isset($_POST['password'])) {
 if (!$_SESSION['loggedIn']): ?>
 
 <html><head><title>Login</title></head>
+<script src="jquery.js"></script>
+<link href="notmain2.css" rel="stylesheet" type="text/css" />
   <body>
-    <p2>You need to login</p2>
-    <form method="post">
-      <p2>Password: <input type="password" name="password"></p2>
-      <input type="submit" name="submit" value="Login">
-    </form>
+    <p2>You need to login</p2><br>
+    <form method="post" id="logi">
+      <input type="password" name="password">
+    <noscript>
+      <input type="submit" name="btnSubmit" value="Login">
+    </noscript>
+      <a onclick="document.getElementById('logi').submit()" id="subb" href="#">btnSubmit</a>
+    </form id="logi">
   </body>
 </html>
 <a href="index.php">Back</a><br><br>
