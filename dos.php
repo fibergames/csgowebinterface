@@ -15,7 +15,7 @@ require('access.php');
   <li1><a class="disabled" href="lookin.php">status</a></li1>
   <li><a class="disabled" href="svcheats1.php">svcheats_1</a></li>
   <li><a class="disabled" href="svcheats0.php">svcheats_0</a></li>
-  <li2><a class="disabled" href="dosplug.php">plugins</a></li2>
+  <li2><a class="disabled">plugins</a></li2>
   <li><form action="action.php" method="post">
       command:  <input type="text" name="cmd" /><input type="submit" name="submit" value="Submit me!" />
   <li><a class="disabled" href="logout.php">LogOut</a></li>

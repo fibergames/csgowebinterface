@@ -3,7 +3,8 @@
     session_start();
     $_SESSION['loggedIn'] = false;
 ?>
-You have logged out
-<form action="index.php">
-    <input type="submit" value="Home">
-</form>
+<html>
+<link href="notmain2.css" rel="stylesheet" type="text/css" />
+<p2>You have been Logged out!</p>
+<a href="index.php">Home</a>
+</html>
