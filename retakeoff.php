@@ -8,3 +8,6 @@ echo "Retake Plugin is now disabled";
 <form action="dos.php">
     <input type="submit" value="Back">
 </form>
+<head>
+<meta http-equiv="refresh" content="0; url=dos.php" />
+</head>
