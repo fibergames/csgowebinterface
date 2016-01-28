@@ -22,7 +22,7 @@ $userid = $_SESSION['userid'];
 		//Sets some Var
 			$run ="steam://rungame/730/76561202255233023/+connect ";
 		//Catching number of owned Servers
-			$pdo = new PDO('mysql:host=localhost;dbname=cswebin', 'root', 'g35k2787');
+			$pdo = new PDO('mysql:host=localhost;dbname=cswebin', 'root', 'password');
 			$statement = $pdo->prepare("SELECT count(serverid) as num FROM servers WHERE owner_id = :useruid");
 			$statement->bindParam(':useruid', $useruid);
 			if($statement->execute()){

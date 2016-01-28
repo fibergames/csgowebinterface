@@ -53,7 +53,7 @@ if (strpos($output,'No Sockets found in /var/run/screen/S-www-data') !== false) 
     echo "<p6>Server is running<br></p6>";
 }
 
-$mysqli = mysqli_connect('localhost', 'root', 'g35k2787', 'cswebin');
+$mysqli = mysqli_connect('localhost', 'root', 'password', 'cswebin');
 $query = 'SELECT password FROM users
           WHERE name = "c"';
 $result = mysqli_query($mysqli, $query);

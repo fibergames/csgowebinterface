@@ -1,7 +1,7 @@
 <?php
  $number = 5;
   $userid = 2;
-	$pdo = new PDO('mysql:host=localhost;dbname=cswebin', 'root', 'g35k2787');
+	$pdo = new PDO('mysql:host=localhost;dbname=cswebin', 'root', 'password');
 //IP Catching
   $statement = $pdo->prepare("SELECT ip,serverid FROM servers WHERE owner_id = :userid");
   $statement->bindParam(':userid', $userid);
