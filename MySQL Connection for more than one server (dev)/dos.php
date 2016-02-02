@@ -21,42 +21,110 @@ $userid = $_SESSION['userid'];
 		  $useruid =  $_SESSION['userid'];
 		//Sets some Var
 			$run ="steam://rungame/730/76561202255233023/+connect ";
-		//Catching number of owned Servers
+
 			$pdo = new PDO('mysql:host=localhost;dbname=cswebin', 'root', 'password');
+		//Catching number of owned Servers
 			$statement = $pdo->prepare("SELECT count(serverid) as num FROM servers WHERE owner_id = :useruid");
 			$statement->bindParam(':useruid', $useruid);
-			if($statement->execute()){
-			    $row = $statement->fetch(PDO::FETCH_ASSOC);
-			    $row['num'];
-			}
-		//Case The user dont has a server
-			$number = $row['num'];
-			if ($number==0){
-				echo"<p>Du hast keine Server also ist das hier leer.</p>";
-			}
-		//IP Catching
-			$statement1 = $pdo->prepare("SELECT serverid,ip FROM servers WHERE owner_id = :useruid");
+			$statement->execute();
+			$row = $statement->fetch(PDO::FETCH_ASSOC);
+		//Catching number of administrated servers
+			$userstm = '%#' . $userid . '#%';
+			$statement0 = $pdo->prepare("SELECT count(serverid) as num from servers where admin_id like :user");
+			$statement0->bindParam(':user', $userstm);
+			$statement0->execute();
+			$row1 = $statement0->fetch(PDO::FETCH_ASSOC);
+		//user can be admin not owner
+			$numown = $row['num'];
+			$numadm = $row1['num'];
+		//IP,Type,ID catching of owned
+		echo '<div class="container">';
+		if ( $numown >= 1 ) {
+			$statement1 = $pdo->prepare("SELECT serverid,ip,type FROM servers WHERE owner_id = :useruid");
 			$statement1->bindParam(':useruid', $useruid);
 			$statement1->execute();
-		  $ips = $statement1->fetchAll();
+		  $own = $statement1->fetchAll();
+		for ($i=0; $i < $numown; $i++) {
+			if ($i == 6) {
+			echo '<br>';
+			}
+			echo '<div class="item" id="' . $i . '">';
+			echo '<img src="pics/server" height="20" width="100">';
+			echo '<img src="pics/' . $own[$i]["type"] . '.png" height="16" width="16">';
+			echo '<img src="pics/own.png" height="16" width="16"><br>';
+			echo "<p2>" . $own[$i]["ip"] . "</p2>";
+			echo '<span id="status">' . $status1 . '</span>';
+			echo '<a class="normala" href="' . $run . $own[$i]["ip"]  .  '">Connect</a>';
+			echo '
+		 <br>
+			<a class="disabled" href="start.php?serverid=' . $own[$i]["serverid"] . '"><img src="pics/play" width="30" height="30"></a>
+			<a class="disabled" href="stop.php"><img src="pics/stop" width="30" height="30"></a>
+			<a class="disabled" href="update.php"><img src="pics/update" width="30" height="30"></a>
+			<a class="disabled" href="#"><img src="pics/more" width="30" height="30"></a>
+			<form action="action.php" method="post">
+				<input type="text" name="cmd" placeholder="command" size="13"/>
+				<input class="disableditem" type="submit" value="send" id="submitter"/>
+				<label for="submitter" class="la"><img class="otherimg" src="pics/arrow" width="30" height="30"></label><br>
+			</form>
+	</div>';
+		}
+	}
+		//IP, Type, ID catching of admin
+	if ($numadm >= 1) {
+			$statement2 = $pdo->prepare("SELECT serverid,ip,type FROM servers WHERE admin_id like :user");
+			$statement2->bindParam(':user', $userstm);
+			$statement2->execute();
+			$adm = $statement2->fetchAll();
+		for ($o=0; $o < $numadm; $o++) {
+			if ($o == 6) {
+			echo '<br>';
+			}
+			echo '<div class="item" id="' . $o . '">';
+			echo '<img src="pics/server" height="20" width="100">';
+			echo '<img src="pics/' . $adm[$o]["type"] . '.png" height="16" width="16">';
+			echo '<img src="pics/adm.png" height="16" width="16"><br>';
+			echo "<p2>" . $adm[$o]["ip"] . "</p2>";
+			echo '<span id="status">' . $status1 . '</span>';
+			echo '<a class="normala" href="' . $run . $adm[$o]["ip"]  .  '">Connect</a>';
+			echo '
+		 <br>
+			<a class="disabled" href="start.php?serverid=' . $adm[$o]["serverid"] . '"><img src="pics/play" width="30" height="30"></a>
+			<a class="disabled" href="stop.php"><img src="pics/stop" width="30" height="30"></a>
+			<a class="disabled" href="update.php"><img src="pics/update" width="30" height="30"></a>
+			<a class="disabled" href="#"><img src="pics/more" width="30" height="30"></a>
+			<form action="action.php" method="post">
+				<input type="text" name="cmd" placeholder="command" size="13"/>
+				<input class="disableditem" type="submit" value="send" id="submitter"/>
+				<label for="submitter" class="la"><img class="otherimg" src="pics/arrow" width="30" height="30"></label><br>
+			</form>
+	</div>';
+		}
+	}
+if ($numown && $numadm = 0) {
+			//Case user is not admin or owner
+			echo "<p>Du hast keine Server also ist das hier leer.</p>";
+		}
 		?>
 
-<div class="container">
+
 
 	<?php
-		if($number != 0){
+	/*
+
+	if($number != 0){
 		for ($i=0; $i < $number; $i++) {
 		if ($i == 6) {
 		echo '<br>';
 		}
 		echo '<div class="item" id="' . $i . '">';
-		echo '<img src="pics/server" height="20" width="100"><br>';
+		echo '<img src="pics/server" height="20" width="100">';
+		echo '<img src="pics/' . $ips[$i]["type"] . '.png" height="16" width="16"><br>';
 		echo "<p2>" . $ips[$i]["ip"] . "</p2>";
 		echo '<span id="status">' . $status1 . '</span>';
 		echo '<a class="normala" href="' . $run . $ips[$i]["ip"]  .  '">Connect</a>';
 		echo '
 	 <br>
-		<a class="disabled" href="start.php"><img src="pics/play" width="30" height="30"></a>
+		<a class="disabled" href="start.php?serverid=' . $ips[$i]["serverid"] . '"><img src="pics/play" width="30" height="30"></a>
 		<a class="disabled" href="stop.php"><img src="pics/stop" width="30" height="30"></a>
 		<a class="disabled" href="update.php"><img src="pics/update" width="30" height="30"></a>
 		<a class="disabled" href="#"><img src="pics/more" width="30" height="30"></a>
@@ -70,7 +138,7 @@ $userid = $_SESSION['userid'];
 	}
 else {
 	die;
-}
+}*/
 ?>
 
 </div>
