@@ -69,7 +69,7 @@ p2 {
   margin-right: 5px;
   margin-left: 5px;
 }
-span {
+.online {
   color: black;
   font-family: "Courier New", Times, serif;
   font-size: 15px;
@@ -78,6 +78,16 @@ span {
   background-color: #00FF00;
   padding: 2px;
 }
+.offline {
+  color: black;
+  font-family: "Courier New", Times, serif;
+  font-size: 15px;
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: #FF8080;
+  padding: 2px;
+}
+
 .normala {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;

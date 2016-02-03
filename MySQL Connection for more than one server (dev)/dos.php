@@ -44,24 +44,36 @@ $userid = $_SESSION['userid'];
 			$statement1->bindParam(':useruid', $useruid);
 			$statement1->execute();
 		  $own = $statement1->fetchAll();
+			$outputls = shell_exec('screen -ls');
+			//NEED CHANGE IN SQL
+			$typus = "csgo";
+
 		for ($i=0; $i < $numown; $i++) {
+
+		//online status
+		if (strpos($outputls,$typus .$own[$i]["serverid"]) !== false) {
+					$status = "online";
+				} else {
+					$status = "offline";
+			}
 			if ($i == 6) {
 			echo '<br>';
 			}
 			echo '<div class="item" id="' . $i . '">';
 			echo '<img src="pics/server" height="20" width="100">';
 			echo '<img src="pics/' . $own[$i]["type"] . '.png" height="16" width="16">';
-			echo '<img src="pics/own.png" height="16" width="16"><br>';
-			echo "<p2>" . $own[$i]["ip"] . "</p2>";
-			echo '<span id="status">' . $status1 . '</span>';
+			echo '<img src="pics/own.png" height="16" width="16">';
+			echo '<p2> ID:' . $own[$i]["serverid"] . '</p2><br>';
+			echo '<p2>' .  $own[$i]["ip"] . '</p2>';
+			echo '<span class="' .$status. '">' . $status . '</span>';
 			echo '<a class="normala" href="' . $run . $own[$i]["ip"]  .  '">Connect</a>';
 			echo '
 		 <br>
 			<a class="disabled" href="start.php?serverid=' . $own[$i]["serverid"] . '"><img src="pics/play" width="30" height="30"></a>
-			<a class="disabled" href="stop.php"><img src="pics/stop" width="30" height="30"></a>
+			<a class="disabled" href="stop.php?serverid=' . $own[$i]["serverid"] . '"><img src="pics/stop" width="30" height="30"></a>
 			<a class="disabled" href="update.php"><img src="pics/update" width="30" height="30"></a>
 			<a class="disabled" href="#"><img src="pics/more" width="30" height="30"></a>
-			<form action="action.php" method="post">
+			<form action="action.php?serverid=' .$own[$i]["serverid"] . '&type=' . $own[$i]["type"] . '" method="post">
 				<input type="text" name="cmd" placeholder="command" size="13"/>
 				<input class="disableditem" type="submit" value="send" id="submitter"/>
 				<label for="submitter" class="la"><img class="otherimg" src="pics/arrow" width="30" height="30"></label><br>
@@ -75,24 +87,35 @@ $userid = $_SESSION['userid'];
 			$statement2->bindParam(':user', $userstm);
 			$statement2->execute();
 			$adm = $statement2->fetchAll();
+			$outputls = shell_exec('screen -ls');
+			//NEED CHANGE IN SQL
+			$typus = "csgo";
+
 		for ($o=0; $o < $numadm; $o++) {
+			//online status
+			if (strpos($outputls,$typus .$adm[$o]["serverid"]) !== false) {
+						$status = "online";
+					} else {
+						$status = "offline";
+				}
 			if ($o == 6) {
 			echo '<br>';
 			}
 			echo '<div class="item" id="' . $o . '">';
 			echo '<img src="pics/server" height="20" width="100">';
 			echo '<img src="pics/' . $adm[$o]["type"] . '.png" height="16" width="16">';
-			echo '<img src="pics/adm.png" height="16" width="16"><br>';
+			echo '<img src="pics/adm.png" height="16" width="16">';
+			echo '<p2> ID:' . $adm[$o]["serverid"] . '</p2><br>';
 			echo "<p2>" . $adm[$o]["ip"] . "</p2>";
-			echo '<span id="status">' . $status1 . '</span>';
+			echo '<span class="' .$status. '">' . $status . '</span>';
 			echo '<a class="normala" href="' . $run . $adm[$o]["ip"]  .  '">Connect</a>';
 			echo '
 		 <br>
 			<a class="disabled" href="start.php?serverid=' . $adm[$o]["serverid"] . '"><img src="pics/play" width="30" height="30"></a>
-			<a class="disabled" href="stop.php"><img src="pics/stop" width="30" height="30"></a>
+			<a class="disabled" href="stop.php?serverid=' . $adm[$o]["serverid"] . '"><img src="pics/stop" width="30" height="30"></a>
 			<a class="disabled" href="update.php"><img src="pics/update" width="30" height="30"></a>
 			<a class="disabled" href="#"><img src="pics/more" width="30" height="30"></a>
-			<form action="action.php" method="post">
+			<form action="action.php?serverid=' .$adm[$o]["serverid"] . '&type=' . $adm[$o]["type"] . '" method="post">
 				<input type="text" name="cmd" placeholder="command" size="13"/>
 				<input class="disableditem" type="submit" value="send" id="submitter"/>
 				<label for="submitter" class="la"><img class="otherimg" src="pics/arrow" width="30" height="30"></label><br>
@@ -100,10 +123,16 @@ $userid = $_SESSION['userid'];
 	</div>';
 		}
 	}
-if ($numown && $numadm = 0) {
-			//Case user is not admin or owner
-			echo "<p>Du hast keine Server also ist das hier leer.</p>";
-		}
+/*
+	if ($numown = '0') {
+		echo "<p>Server hier bestellen</p>";
+	}
+	if ($numadm = '0') {
+		echo "<p>So als admin eintragen lassen</p>";
+	}
+*/
+
+
 		?>
 
 
